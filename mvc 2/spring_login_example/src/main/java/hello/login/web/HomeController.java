@@ -30,6 +30,7 @@ public class HomeController {
         //로그인
         Member loginMember = memberRepository.findById(memberId);
 
+        System.out.println(loginMember.getName());
         model.addAttribute("member", loginMember);
         return "loginHome";
     }
