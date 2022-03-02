@@ -19,6 +19,7 @@ import java.util.Enumeration;
 public class RequestParamServlet extends HttpServlet {
 
 
+    //hello-form.html로부터의 요청을 통해 알 수 있듯이 request는 get뿐만 아니라, post로 넘어오는 값도 받을 수 있다.
     @Override
     public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
 
