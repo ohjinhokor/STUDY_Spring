@@ -43,8 +43,8 @@ public class RequestHeaderServlet extends HttpServlet {
 //        while (headerNames.hasMoreElements()) {
 //            System.out.println("headerNames = " + headerNames);
 
-        request.getHeaderNames().asIterator()
-                .forEachRemaining(headerName -> System.out.println("headerName = " + headerName));
+//        request.getHeaderNames().asIterator()
+//                .forEachRemaining(headerName -> System.out.println("headerName = " + headerName));
     }
 
 
@@ -58,9 +58,9 @@ public class RequestHeaderServlet extends HttpServlet {
                 request.getServerPort()); //Host 헤더
         System.out.println();
         System.out.println("[Accept-Language 편의 조회]");
-        request.getLocales().asIterator()
-                .forEachRemaining(locale -> System.out.println("locale = " +
-                        locale));
+//        request.getLocales().asIterator()
+//                .forEachRemaining(locale -> System.out.println("locale = " +
+//                        locale));
         System.out.println("request.getLocale() = " + request.getLocale());
         System.out.println();
         System.out.println("[cookie 편의 조회]");

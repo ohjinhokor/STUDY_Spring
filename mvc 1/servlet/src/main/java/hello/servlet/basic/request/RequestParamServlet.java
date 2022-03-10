@@ -25,8 +25,8 @@ public class RequestParamServlet extends HttpServlet {
 
         System.out.println("전체 파라미터 조회 시작");
 
-        request.getParameterNames().asIterator()
-                .forEachRemaining(paramName-> System.out.println(paramName + "=" + request.getParameter(paramName)));
+//        request.getParameterNames().asIterator()
+//                .forEachRemaining(paramName-> System.out.println(paramName + "=" + request.getParameter(paramName)));
 
         System.out.println("전체 파라미터 조회 끝 \n");
 
