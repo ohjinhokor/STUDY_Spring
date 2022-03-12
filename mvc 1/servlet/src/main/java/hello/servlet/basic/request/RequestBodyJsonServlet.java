@@ -31,7 +31,7 @@ public class RequestBodyJsonServlet extends HttpServlet {
 
         response.getWriter().write("ok");
 
-        // 위의 과정이 @RequestBody HelloData helloData를 파라미터로 하는 것으로 변환됨(어떤 추상화 과정이 있는지 살펴보자)
+        // 위의 과정이 '@RequestBody HelloData helloData'를 파라미터로 하는 것으로 변환됨(어떤 추상화 과정이 있는지 살펴보자)
 
         //HTML Form, 단순 텍스트, JSON - 이렇게 3가지 방법만 알면 어떤 요청 메세지든 다 받을 수 있다.
     }

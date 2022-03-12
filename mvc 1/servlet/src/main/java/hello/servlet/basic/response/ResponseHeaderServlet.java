@@ -27,6 +27,7 @@ public class ResponseHeaderServlet extends HttpServlet {
         //[Header 편의 메서드]
         content(response);
 
+        //[message Body]
         PrintWriter writer = response.getWriter();
         writer.println("안녕하세요");
 
@@ -55,9 +56,9 @@ public class ResponseHeaderServlet extends HttpServlet {
     private void redirect(HttpServletResponse response) throws IOException {
         //Status Code 302
         //Location: /basic/hello-form.html
-        response.setStatus(HttpServletResponse.SC_FOUND); //302
-        response.setHeader("Location", "/basic/hello-form.html");
-//        response.sendRedirect("/basic/hello-form.html");
+//        response.setStatus(HttpServletResponse.SC_FOUND); //302 , 위에서 setStatus를 했지만 같은 키를 사용하므로 덮어쓰게 됨.
+//        response.setHeader("Location", "/basic/hello-form.html");
+        response.sendRedirect("/basic/hello-form.html");
     }
 
 

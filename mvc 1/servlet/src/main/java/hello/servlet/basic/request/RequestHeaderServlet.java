@@ -19,6 +19,9 @@ public class RequestHeaderServlet extends HttpServlet {
         printHeaderUtils(request);
         printEtc(request);
 
+        //키 값을 이용하여 헤더에서 특정 값을 받아오는 방법
+        request.getHeader("host");
+
     }
 
     private void printStartLine(HttpServletRequest request) {
@@ -26,9 +29,10 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println("request.getMethod() = " + request.getMethod()); //GET
         System.out.println("request.getProtocal() = " + request.getProtocol()); // HTTP/1.1
         System.out.println("request.getScheme() = " + request.getScheme()); //http
+
         // http://localhost:8080/request-header
         System.out.println("request.getRequestURL() = " + request.getRequestURL());
-        // /request-test
+        // /request-header
         System.out.println("request.getRequestURI() = " + request.getRequestURI());
         //username=hi
         System.out.println("request.getQueryString() = " +
@@ -38,13 +42,15 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println();
     }
 
-    private void printHeader(HttpServletRequest request){
-//        Enumeration<String> headerNames = request.getHeaderNames();
-//        while (headerNames.hasMoreElements()) {
-//            System.out.println("headerNames = " + headerNames);
-
-//        request.getHeaderNames().asIterator()
-//                .forEachRemaining(headerName -> System.out.println("headerName = " + headerName));
+    private void printHeader(HttpServletRequest request) {
+        Enumeration<String> headerNames = request.getHeaderNames();
+        while (headerNames.hasMoreElements()) {
+            headerNames.nextElement();
+            System.out.println("headerNames = " + headerNames);
+        }
+//            request.getHeaderNames().asIterator()
+//                    .forEachRemaining(headerName -> System.out.println("headerName = " + headerName));
+//        }
     }
 
 
@@ -53,9 +59,9 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println("--- Header 편의 조회 start ---");
         System.out.println("[Host 편의 조회]");
         System.out.println("request.getServerName() = " +
-                request.getServerName()); //Host 헤더
+                request.getServerName()); //ex. localhost
         System.out.println("request.getServerPort() = " +
-                request.getServerPort()); //Host 헤더
+                request.getServerPort()); //ex. 8080
         System.out.println();
         System.out.println("[Accept-Language 편의 조회]");
 //        request.getLocales().asIterator()
