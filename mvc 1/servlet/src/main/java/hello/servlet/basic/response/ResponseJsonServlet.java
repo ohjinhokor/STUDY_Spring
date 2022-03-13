@@ -27,6 +27,7 @@ public class ResponseJsonServlet extends HttpServlet {
         helloData.setAge(20);
 
         //{"username" : "kim", "age":20}
+        // 나중에는 반환형에 HelloData를 받고 return helloData를 해주면 자동으로 json형태로 매핑됨
         String result = objectMapper.writeValueAsString(helloData);
         response.getWriter().write(result);
     }
