@@ -9,8 +9,10 @@ package hello.springmvc.basic.request;
 // request.getParameter()를 사용하면 1번과 2번을 다 조회할 수 있음, 또는 @RequestParam 사용
 
 
+import hello.springmvc.basic.HelloData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -67,6 +69,19 @@ public class RequestParamController {
     public String requestParamMap(@RequestParam Map<String, Object> paramMap) {
         log.info("username={}, age={}", paramMap.get("username"),
             paramMap.get("age")); // 만약 request에 key가 age인 데이터가 없으면 null이 나옴
+        return "ok";
+    }
+
+    // HelloData 객체가 생성되고, 요청 파라미터의 값도 모두 들어가 있다.
+    // @ModelAttribute가 있으면 다음을 실행한다.
+    // 1. HelloData 객체를 생성 2. 요청 파라미터의 이름으로 HelloData 객체의 프로퍼티를 찾는다. 해당 프로퍼티의 setter를 호출해서 파라미터의 값을 입력(바인딩)한다.(예를 들어 username이면 setUsername() 메서드를 찾아서 호출하여 값을 입력한다.)
+
+    // 아래의 경우 @ModelAttribute를 생략해도 실행이 잘 된다.
+    // 어노테이션이 생략되어 있는 경우 2가지 경우의 수가 있다. String, int, Integer처럼 단순 타입의 경우 @RequestParam이 적용되고, argument Resolver에서 지정해둔 타입은 argument Resolver에서 적혀있는대로 처리된다. 그리고 나머지는 모두 @ModelAttribute가 적용된다.
+    @ResponseBody
+    @RequestMapping("/model-attribute-v1")
+    public String modelAttributeV1(@ModelAttribute HelloData helloData) {
+        log.info("username={}, age={}", helloData.getUsername(), helloData.getAge());
         return "ok";
     }
 }
